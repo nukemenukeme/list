@@ -45,7 +45,11 @@ Dict1500 | {{artist.name}}
         <p>
             <strong>sns:</strong> {{ artist.sns }}
         </p>
-        {% endif %} {% if artist.arzticle1 != '' %}
+        {% endif %} {% if artist.profile != '' %}
+        <p>
+            <strong>profile:</strong> {{ artist.profile }}
+        </p>
+        {% endif %} {% if artist.article1 != '' %}
         <p>
             <strong>article1:</strong> {{ artist.article1 }}
         </p>
