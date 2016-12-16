@@ -1,0 +1,80 @@
+{% extends "_base.html.j2" %}
+
+{% block title %}
+Dict1500 | {{artist.name}}
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <h1 class="{{ " ".join(artist.tags) }}">
+          <a href="{{ artist.website }}" target="_blank">{{ artist.name }}</a>
+        </h1> {% if artist.tags != '' %}
+        <p>
+            <strong>Tags:</strong> {{ artist.tags }}
+        </p>
+        {% endif %} {% if artist.related != '' %}
+        <p>
+            <strong>related:</strong> {{ artist.related }}
+        </p>
+        {% endif %} {% if artist.based != '' %}
+        <p>
+            <strong>based:</strong> {{ artist.based }}
+        </p>
+        {% endif %} {% if artist.born != '' %}
+        <p>
+            <strong>born:</strong> {{ artist.born }}
+        </p>
+        {% endif %} {% if artist.contact != '' %}
+        <p>
+            <strong>contact:</strong> {{ artist.contact }}
+        </p>
+        {% endif %} {% if artist.cv != '' %}
+        <p>
+            <a href="{{ artist.cv }}">
+                <strong>CV</strong>
+            </a>
+        </p>
+        {% endif %} {% if artist.portfolio != '' %}
+        <p>
+            <a href="{{ artist.portfolio }}">
+                <strong>Portfolio</strong>
+            </a>
+        </p>
+        {% endif %} {% if artist.sns != '' %}
+        <p>
+            <strong>sns:</strong> {{ artist.sns }}
+        </p>
+        {% endif %} {% if artist.arzticle1 != '' %}
+        <p>
+            <strong>article1:</strong> {{ artist.article1 }}
+        </p>
+        {% endif %} {% if artist.article2 != '' %}
+        <p>
+            <strong>article2:</strong> {{ artist.article2 }}
+        </p>
+        {% endif %} {% if artist.article3 != '' %}
+        <p>
+            <strong>article3:</strong> {{ artist.article3 }}
+        </p>
+        {% endif %} {% if artist.log1 != '' %}
+        <p>
+            <strong>Log1:</strong> {{ artist.log1 }}
+        </p>
+        {% endif %} {% if artist.log2 != '' %}
+        <p>
+            <strong>Log2:</strong> {{ artist.log2 }}
+        </p>
+        {% endif %} {% if artist.log3 != '' %}
+        <p>
+            <strong>Log3:</strong> {{ artist.log3 }}
+        </p>
+        {% endif %} {% if artist.memo1 != '' %}
+        <p>
+            <strong>memo1:</strong> {{ artist.memo1 }}
+        </p>
+        {% endif %}
+
+    </div>
+
+{% endblock %}
