@@ -1,0 +1,30 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+body {
+    letter-spacing: 0.04em;
+    margin: 0px 40px 0px;
+    background: white;
+    font-family: "Noto Sans", "Noto Sans CJK JP", sans-serif;
+    font-size: 14px;
+}
+
+p {
+    margin: 0px 40px 0px;
+}
+
+h1 {
+    margin: 60px 40px 0px;
+    line-height: 1.4em;
+    font-size: 21px;
+    font-weight: normal;
+}
+
+a {
+    color: #303030;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #004dff;
+    text-decoration: none;
+}
