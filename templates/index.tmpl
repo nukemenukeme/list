@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="ja-JP">
+    <meta charset="UTF-8">
+    <title>List As Blog By Nukeme</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <meta name="copyright" content="List As Blog">
+    <meta name="description" content="List As Blog Listed By Nukeme">
+    <meta name="keyword" content="Nukeme, List">
+    <meta property="og:title" content="List As Blog By Nukeme">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="List As Blog Listed By Nukeme">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <!-- {{ time_generated }} -->
+    {% for row in data %}
+    <div>
+        <h1 class="{% if row.fav == 'a' %}super-favorite{% endif %}">
+          <a href="{{ row.website }}" target="_blank">{{ row.name }}</a>
+        </h1> {% if row.tags != '' %}
+        <p>
+            <strong>Tags:</strong> {{ row.tags }}
+        </p>
+        {% endif %} {% if row.related != '' %}
+        <p>
+            <strong>related:</strong> {{ row.related }}
+        </p>
+        {% endif %} {% if row.based != '' %}
+        <p>
+            <strong>based:</strong> {{ row.based }}
+        </p>
+        {% endif %} {% if row.born != '' %}
+        <p>
+            <strong>born:</strong> {{ row.born }}
+        </p>
+        {% endif %} {% if row.contact != '' %}
+        <p>
+            <strong>contact:</strong> {{ row.contact }}
+        </p>
+        {% endif %} {% if row.cv != '' %}
+        <p>
+            <a href="{{ row.cv }}">
+                <strong>CV</strong>
+            </a>
+        </p>
+        {% endif %} {% if row.portfolio != '' %}
+        <p>
+            <a href="{{ row.portfolio }}">
+                <strong>Portfolio</strong>
+            </a>
+        </p>
+        {% endif %} {% if row.sns != '' %}
+        <p>
+            <strong>sns:</strong> {{ row.sns }}
+        </p>
+        {% endif %} {% if row.article1 != '' %}
+        <p>
+            <strong>article1:</strong> {{ row.article1 }}
+        </p>
+        {% endif %} {% if row.article2 != '' %}
+        <p>
+            <strong>article2:</strong> {{ row.article2 }}
+        </p>
+        {% endif %} {% if row.article3 != '' %}
+        <p>
+            <strong>article3:</strong> {{ row.article3 }}
+        </p>
+        {% endif %} {% if row.log1 != '' %}
+        <p>
+            <strong>Log1:</strong> {{ row.log1 }}
+        </p>
+        {% endif %} {% if row.log2 != '' %}
+        <p>
+            <strong>Log2:</strong> {{ row.log2 }}
+        </p>
+        {% endif %} {% if row.log3 != '' %}
+        <p>
+            <strong>Log3:</strong> {{ row.log3 }}
+        </p>
+        {% endif %} {% if row.memo1 != '' %}
+        <p>
+            <strong>memo1:</strong> {{ row.memo1 }}
+        </p>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+</body>
+
+</html>
