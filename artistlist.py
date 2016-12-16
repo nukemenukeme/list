@@ -8,6 +8,7 @@ from datetime import datetime
 import os
 import shutil
 import time
+from slugify import slugify
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 GEN_DIR = os.path.join(BASE_DIR, "generated/")
@@ -51,8 +52,14 @@ def get_data():
             return_arr.append(process_row(row))
         return return_arr
 
+def copy_static():
+    from_dir = os.path.join(BASE_DIR, "static/")
+    target_dir = os.path.join(GEN_DIR, "static/")
+    shutil.copytree(from_dir, target_dir)
+
 def create_output_dir():
     os.mkdir(GEN_DIR)
+    os.mkdir(os.path.join(GEN_DIR, "artist"))
 
 def generate_index(data):
     u"""
@@ -67,6 +74,16 @@ def generate_index(data):
     with open(index_target, 'w') as generated:
             generated.write(html.encode('utf-8'))
 
+def create_artist_dir(row):
+
+    if row["slug"] != "":
+        slug = row["slug"]
+    else:
+        slug = slugify(row["name"])
+
+    dir_name = os.path.join(GEN_DIR, "artist", slug)
+    os.mkdir(dir_name)
+
 def generate_artist_page(row):
     u"""
     個別ページでは、name以下の情報を全て載せる
@@ -76,5 +93,11 @@ def generate_artist_page(row):
 if __name__ == "__main__":
     cleanup()
     create_output_dir()
+    copy_static()
     data = get_data()
     generate_index(data)
+    for row in data:
+        try:
+            create_artist_dir(row)
+        except OSError as e:
+            print e
