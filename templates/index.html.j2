@@ -1,0 +1,15 @@
+{% extends "_base.html.j2" %}
+
+{% block title %}
+Dict1500
+{% endblock %}
+
+{% block content %}
+{% for artist in data %}
+<h1 class="{{ " ".join(artist.tags) }}">
+  <a href="/artist/{{ artist.slug }}/" target="_blank">{{ artist.name }}</a>
+</h1>
+
+{% endfor %}
+
+{% endblock %}
