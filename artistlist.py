@@ -7,6 +7,7 @@ from jinja2 import Environment, FileSystemLoader
 from datetime import datetime
 import os
 import shutil
+import time
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 GEN_DIR = os.path.join(BASE_DIR, "generated/")
@@ -51,7 +52,7 @@ def get_data():
         return return_arr
 
 def create_output_dir():
-    pass
+    os.mkdir(GEN_DIR)
 
 def generate_index(data):
     u"""
@@ -62,9 +63,9 @@ def generate_index(data):
         "data":data,
         "time_generated": datetime.now()
         })
-    with open("index.html", 'w') as generated:
-             generated.write(html.encode('utf-8'))
-    pass
+    index_target = os.path.join(GEN_DIR, "index.html")
+    with open(index_target, 'w') as generated:
+            generated.write(html.encode('utf-8'))
 
 def generate_artist_page(row):
     u"""
@@ -73,4 +74,7 @@ def generate_artist_page(row):
     pass
 
 if __name__ == "__main__":
-    pass
+    cleanup()
+    create_output_dir()
+    data = get_data()
+    generate_index(data)
