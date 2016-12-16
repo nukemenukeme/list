@@ -2,18 +2,30 @@
 
 body {
     letter-spacing: 0.04em;
+<<<<<<< HEAD
     margin: 40px 40px 0px;
+=======
+    margin: 0px 40px 0px;
+>>>>>>> master
     background: white;
     font-family: "Noto Sans", "Noto Sans CJK JP", sans-serif;
     font-size: 14px;
 }
 
 p {
+<<<<<<< HEAD
     margin: 10px 0px 0px;
 }
 
 h1 {
     margin: 40px 0px 0px;
+=======
+    margin: 0px 40px 0px;
+}
+
+h1 {
+    margin: 60px 40px 0px;
+>>>>>>> master
     line-height: 1.4em;
     font-size: 21px;
     font-weight: normal;
