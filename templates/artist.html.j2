@@ -1,10 +1,22 @@
 {% extends "_base.html.j2" %}
 
 {% block title %}
-Dict1500 | {{artist.name}}
+tiny PALACE | {{artist.name}}
 {% endblock %}
 
 {% block content %}
+
+<ul>
+  <li>
+    <a href="/artist/{{ prv.slug }}">Previous</a>
+  </li>
+  <li>
+    <a href="/">Top</a>
+  </li>
+  <li>
+    <a href="/artist/{{ nxt.slug }}">Next</a>
+  </li>
+</ul>
 
     <div>
         <h1 class="{{ " ".join(artist.tags) }}">

@@ -108,21 +108,28 @@ def create_artist_dir(row):
     dir_name = os.path.join(GEN_DIR, "artist", slug)
     os.mkdir(dir_name)
 
-def generate_artist_page(row):
+def generate_artist_page(current, prv, nxt):
 
     """
     Artist page has all information without e-mail address.
     """
 
-    slug = row["slug"]
+    slug = current["slug"]
     dir_name = os.path.join(GEN_DIR, "artist", slug)
 
     html = artist_template.render({
-        "artist":row,
+        "artist":current, "prv":prv, "nxt":nxt
         })
     index_target = os.path.join(dir_name, "index.html")
     with open(index_target, 'w') as generated:
             generated.write(html.encode('utf-8'))
+
+    '''
+    {% for artist in data %}
+    <h1 class="{{ " ".join(artist.tags) }}">
+      <a href="/artist/{{ artist.slug }}/" target="_blank">{{ artist.name }}</a>
+    </h1>
+    '''
 
 if __name__ == "__main__":
     cleanup()
@@ -131,9 +138,20 @@ if __name__ == "__main__":
     data = get_data()
     print data
     generate_index(data)
-    for row in data:
+    for n in xrange(len(data)):
         try:
-            create_artist_dir(row)
-            generate_artist_page(row)
+            current = data[n]
+            # Get preview and current for links
+            if n == 0:
+                prv = data[-1]
+                nxt = data[1]
+            elif n == len(data) - 1:
+                prv = data[n-1]
+                nxt = data[0]
+            else:
+                prv = data[n-1]
+                nxt = data[n+1]
+            create_artist_dir(current)
+            generate_artist_page(current, prv, nxt)
         except OSError as e:
             print e
