@@ -92,7 +92,12 @@ def generate_index(data):
     dd = defaultdict(list)
     for artist in data:
         dd[artist["alphabet"]].append(artist)
-    sorted_by_name = sorted(dd.items(), key=lambda kp: kp[0])
+
+    items = dd.items()
+    items_sorted = [(alphabet, sorted(artist_group, key=lambda artist: artist["name"][0]))
+                     for (alphabet, artist_group) in items]
+
+    sorted_by_name = sorted(items_sorted, key=lambda kp: kp[0])
 
     html = index_template.render({
         "sorted_by_name":sorted_by_name,
