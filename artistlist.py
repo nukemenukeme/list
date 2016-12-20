@@ -9,6 +9,7 @@ import os
 import shutil
 import time
 from slugify import slugify
+from collections import defaultdict
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 GEN_DIR = os.path.join(BASE_DIR, "generated/")
@@ -17,13 +18,7 @@ env = Environment(loader=FileSystemLoader(os.path.join(BASE_DIR, "templates")))
 index_template = env.get_template('index.html.j2')
 artist_template = env.get_template('artist.html.j2')
 
-# with open("list.csv", "r") as datafile:
-#     data = unicodecsv.DictReader(datafile)
-#     html = tpl.render({"data":data,
-#                        "time_generated": datetime.now() })
-#     with open("generate.html", 'w') as generated:
-#         generated.write(html.encode('utf-8'))
-
+# Directory consept
 # ./
 #  +- generated/
 #      +-- index.html
@@ -94,9 +89,13 @@ def generate_index(data):
     """
     Index page has only artist name. Name linked artist page.
     """
+    dd = defaultdict(list)
+    for artist in data:
+        dd[artist["alphabet"]].append(artist)
+    sorted_by_name = sorted(dd.items(), key=lambda kp: kp[0])
 
     html = index_template.render({
-        "data":data,
+        "sorted_by_name":sorted_by_name,
         "time_generated": datetime.now()
         })
     index_target = os.path.join(GEN_DIR, "index.html")
@@ -123,13 +122,6 @@ def generate_artist_page(current, prv, nxt):
     index_target = os.path.join(dir_name, "index.html")
     with open(index_target, 'w') as generated:
             generated.write(html.encode('utf-8'))
-
-    '''
-    {% for artist in data %}
-    <h1 class="{{ " ".join(artist.tags) }}">
-      <a href="/artist/{{ artist.slug }}/" target="_blank">{{ artist.name }}</a>
-    </h1>
-    '''
 
 if __name__ == "__main__":
     cleanup()
