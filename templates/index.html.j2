@@ -5,6 +5,17 @@ tiny PALACE
 {% endblock %}
 
 {% block content %}
+
+<p class="tags-menu">
+  <select name="tags">
+    <option value="tags1">tags1</option>
+    <option value="tags2">tags2</option>
+    <option value="tags3">tags3</option>
+    <option value="tags4">tags4</option>
+    <option value="tags5">tags5</option>
+  </select>
+</p>
+
 <ul id="artistlist">
   {% for alphabet,artist_group in sorted_by_name %}
   <li>

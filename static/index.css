@@ -1,4 +1,5 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+@import url(//fonts.googleapis.com/css?family=Lato:100);
 
 body {
     letter-spacing: 0.04em;
@@ -8,14 +9,19 @@ body {
     font-size: 14px;
 }
 
+.tags-menu {
+    margin: 40px 20px 40px;
+}
+
 p {
-    margin: 10px 40px 0px;
+    margin: 10px 20px 0px;
 }
 
 h3 {
-    font-weight: lighter;
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
     color: #004dff;
-    margin: 20px 20px 0px;
+    margin: 40px 20px 0px;
     font-size: 42px;
 }
 
@@ -28,16 +34,20 @@ h4 {
 }
 
 #artistlist {
-   -moz-column-count: 3;
-   -webkit-column-count: 3;
-   column-count: 3;
-   list-style: none;
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+    list-style: none;
 }
 
 ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.prev_next {
+    margin: 0px 20px 0px;
 }
 
 li {

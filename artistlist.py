@@ -89,13 +89,14 @@ def generate_index(data):
     """
     Index page has only artist name. Name linked artist page.
     """
+    
     dd = defaultdict(list)
     for artist in data:
         dd[artist["alphabet"]].append(artist)
 
     items = dd.items()
-    items_sorted = [(alphabet, sorted(artist_group, key=lambda artist: artist["name"][0]))
-                     for (alphabet, artist_group) in items]
+    items_sorted = [(alphabet, sorted(alphabet_group, key=lambda artist: artist["name"][0]))
+                     for (alphabet, alphabet_group) in items]
 
     sorted_by_name = sorted(items_sorted, key=lambda kp: kp[0])
 

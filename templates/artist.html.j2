@@ -6,7 +6,7 @@ tiny PALACE | {{artist.name}}
 
 {% block content %}
 
-<ul>
+<ul class="prev_next">
   <li>
     <a href="/artist/{{ prv.slug }}">Previous</a>
   </li>
@@ -19,9 +19,9 @@ tiny PALACE | {{artist.name}}
 </ul>
 
     <div>
-        <h1 class="{{ " ".join(artist.tags) }}">
+        <h3 class="{{ " ".join(artist.tags) }}">
           <a href="{{ artist.website }}" target="_blank">{{ artist.name }}</a>
-        </h1> {% if artist.tags != '' %}
+        </h3> {% if artist.tags != '' %}
         <p>
             <strong>Tags:</strong> {{ artist.tags }}
         </p>
