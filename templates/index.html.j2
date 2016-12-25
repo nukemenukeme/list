@@ -22,11 +22,13 @@ tiny PALACE
     <h3>{{ alphabet }}</h3>
     <ul class="artist-group">
     {% for artist in artist_group %}
+    <div class="fav-{{ artist.fav }}">
       <li class="artist" data-alphabet="{{ artist.alphabet }}">
         <h4 class="{{ " ".join(artist.tags) }}">
           <a href="/artist/{{ artist.slug }}/" target="_blank">{{ artist.name }}</a>
         </h4>
       </li>
+    </div>
     {% endfor %}
     </ul>
   </li>

@@ -19,6 +19,9 @@ tiny PALACE | {{artist.name}}
 </ul>
 
     <div>
+      <div class="image-capture">
+        <img src="/static/images/artist/{{ artist.slug }}/image1.png" alt="images" width="960px" height="540px" border="0" />
+      </div>
         <h3 class="{{ " ".join(artist.tags) }}">
           <a href="{{ artist.website }}" target="_blank">{{ artist.name }}</a>
         </h3> {% if artist.tags != '' %}
